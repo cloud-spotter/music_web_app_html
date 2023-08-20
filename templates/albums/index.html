@@ -3,14 +3,25 @@
 <html lang="en">
     <head>
         <title>Album List</title>
+        <style type="text/css">
+            /** This is CSS, it is used for styling the page **/
+            body {
+              background-color: rgba(191, 248, 235, 0.579);
+              color: hwb(183 1% 45%);
+              font-size: 2em;
+              font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+          </style>
     </head>
     <body>
         <h1>Albums</h1>
+        
+        <ul>
         {% for album in albums %}
-            <article>
-            <h2>Title: {{album.title}}</h2>
-            <p>Released: {{album.release_year}}</p>
-            </article>
+            <li>
+                <a href="/albums/{{album.id}}">{{album.title}}</a>
+            </li>
         {% endfor %}
+        </ul>
     </body>
 </html>

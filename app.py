@@ -25,6 +25,23 @@ def get_single_album(album_id):
     print(album)
     return render_template("albums/show.html", album=album)
 
+## ---- Section 03 Exercise ---- ##
+@app.route(f"/albums/<id>")
+def get_album(id):
+    connection = get_flask_database_connection(app)
+    repository = AlbumRepository(connection)
+    album = repository.find(id)
+    return render_template("albums/show.html", album=album)
+
+@app.route(f"/albums/<id>")
+def visit_album_show_page(id):
+    connection = get_flask_database_connection(app)
+    repository = AlbumRepository(connection)
+    album = repository.find(id)
+    return render_template("albums/show.html", album=album)
+
+
+
 # == Example Code Below ==
 
 # GET /emoji

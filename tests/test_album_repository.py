@@ -29,3 +29,12 @@ def test_create(db_connection):
         Album(1, 'Father of the Bride', 2019, 1),
         Album(2, 'London Calling', 1979, 3),
         Album(3, 'Test Title', 1000, 3)]
+
+'''
+When I call #find with an id
+I get that album back
+'''
+def test_find(db_connection):
+    db_connection.seed("seeds/album_store.sql")
+    repository = AlbumRepository(db_connection)
+    assert repository.find(1) == Album(1, 'Father of the Bride', 2019, 1)
